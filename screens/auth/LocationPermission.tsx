@@ -88,7 +88,7 @@ const LocationPermission = () => {
         </View>
 
         {/* todo: add geocoder to extract address name by using coordinates */}
-        <View className="relative w-full items-center min-h-[77vh] ">
+        <View className="relative w-full items-center h-[84vh] ">
           {location && 
             <MapView
             style={StyleSheet.absoluteFillObject}
