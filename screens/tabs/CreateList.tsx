@@ -15,7 +15,6 @@ import { useNavigation } from '@react-navigation/native'
 
 
 const CreateList = () => {
-  const navigation = useNavigation();
   const [form, setForm] = useState({
     title: '',
     description: '',
@@ -127,21 +126,21 @@ const CreateList = () => {
     
   }
 
-
   return (
-    <SafeAreaView className="h-full">
-      <KeyboardAvoidingView
+    <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        className="py-10"
+        className="flex-1 "
       >
-        <ScrollView className="px-4">
-          <Text className="text-2xl text-mainText font-psemibold">
-            Make Your Listing
+        <ScrollView className="px-4 h-full"
+          showsVerticalScrollIndicator={false}
+        >
+          <Text className="text-2xl text-mainText font-psemibold mt-8">
+            Make your offer listing
           </Text>
-          <View className="py-3">
+          <View className="py-3 mt-5">
             {form.photo && <Image source={{uri: form.photo.uri}} resizeMode='cover' className="w-full h-40 px-4 rounded-2xl"/>}
           </View>
-          <View className="flex-row justify-evenly items-center pd-5 w-full h-24 px-4 rounded-2xl border-2 border-dashed border-black-100 space-x-2">
+          <View className={`flex-row justify-evenly items-center pd-5 w-full h-24 px-4 rounded-2xl border-2 border-dashed border-black-100 space-x-2 ${form.photo ? 'border-0' : ''}`}>
             <View>
               <TouchableOpacity onPress={() => openPicker('image')}>
                   <View className="flex-row">
@@ -153,8 +152,8 @@ const CreateList = () => {
                       />
                     </View>
                     <View className="px-2">
-                      <Text className="text-xs text-disabled font-pmedium">Take photo</Text>
-                      <Text className="text-xs text-disabled font-pmedium ">from gallery</Text>
+                      <Text className="text-xs text-disabled font-pmedium">
+                      {form.photo ? 'Change photo' : 'Take photo'} {`\n`}from gallery</Text>
                     </View>
                   </View>
               </TouchableOpacity>
